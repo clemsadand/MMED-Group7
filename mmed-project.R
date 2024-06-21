@@ -44,7 +44,7 @@ seirv <- function(t, y, params){
         dS.Adt <- (birth + immunity_loss.A) - (infection.A + contact_suscT_to_suscA + vaccination.A)
         dE.Adt <- infection.A - incubation.A
         dI.Adt <- incubation.A - (recovery.A + disease_death)
-        dR.Adt <- - recovery.A
+        dR.Adt <- - (recovery.A + disease_death)
         dV.Adt <- vaccination.A - immunity_loss.A
 
         #Risk tolerant
