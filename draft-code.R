@@ -43,7 +43,7 @@ seivr <- function(t, y, params){
     dS.Adt <- (birth+immunity_loss.A)-(infection.A+vaccination.A+contact_susc_to_infectious.A)#+contact_suscT_to_suscA)
     dE.Adt <- infection.A-incubation.A
     dI.Adt <- incubation.A-recovery.A-disease_death
-    dR.Adt <- recovery.A
+    dR.Adt <- -recovery.A
     dV.Adt <- vaccination.A-immunity_loss.A
     
     ##risk tolerant
@@ -92,4 +92,5 @@ plot(ts_seivr$time,               # Time on the x axis
      xlim = c(0, 2*365),           #
      type = "l",                # Use a line plot
      bty = "n")                 # Remove the box around the plot
+
 
