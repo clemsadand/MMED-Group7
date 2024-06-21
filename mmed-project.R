@@ -4,7 +4,7 @@ library(deSolve)# Load libary to be used for numerical integration
 seirv_params <- list(
   beta.AA = 0.1,
   beta.AT = 0.01,
-  beta.TA = 0.01,
+  beta.TA = 0.001,
   beta.TT = 0.1,
   N.A = 100000,
   N.T = 100000,
