@@ -21,8 +21,8 @@ seirv_pre_vax <- within(seirv_params, {
 })
 
 #Initial state
-flu_zero <- c(S.A = seirv_params$N.A - 15, E.A = 5, I.A = 8, R.A = 1, V.A = 1,
-              S.T = seirv_params$N.T - 2, E.T = 0, I.T = 1, R.T = 1, V.T = 1)
+flu_zero <- c(S.A = seirv_params$N.A - 14, E.A = 5, I.A = 8, R.A = 0, V.A = 1,
+              S.T = seirv_params$N.T - 2, E.T = 0, I.T = 1, R.T = 0, V.T = 1)
 
 
 
@@ -59,7 +59,7 @@ seirv <- function(t, y, params){
         dS.Tdt <- (birth + immunity_loss.T) - (infection.T + contact_suscA_to_suscT + vaccination.T)
         dE.Tdt <- infection.T - incubation.T
         dI.Tdt <- incubation.T - (recovery.T + disease_death)
-        dR.Tdt <- - recovery.T
+        dR.Tdt <- - (recovery.T + disease_death)
         dV.Tdt <- vaccination.T - immunity_loss.T
 
         # Return the rate of change for each compartment adjusted for natural deaths
@@ -78,7 +78,7 @@ ts_seirv <- tail(data.frame(lsoda(
   parms = seirv_params              # Vector of parameters
 )), 100)
 
-head(ts_seirv)
+head(ts_seirv,20)
 
 
 plot(ts_seirv$time,               # Time on the x axis
