@@ -3,17 +3,17 @@ library(deSolve)# Load libary to be used for numerical integration
 #Initialization of parameters
 seirv_params <- list(
   beta.AA = 0.1,
-  beta.AT = 0.1,
-  beta.TA = 0.1,
+  beta.AT = 0.01,
+  beta.TA = 0.01,
   beta.TT = 0.1,
   N.A = 100000,
   N.T = 100000,
   ave_lifespan = 70*365,#years
-  ave_influenza_duration = 5,#days, from 3 to 7
-  ave_incubation_period = 2,#days, from 1 to 4 
+  ave_influenza_duration = 4,#days, from 3 to 7
+  ave_incubation_period = 4,#days, from 1 to 4 
   ave_recovery_rate = 10,#days
-  ave_vaccination_period = 8*31,#????September to April
-  ave_vaccination_duration = 6*31#months
+  ave_vaccination_period = 365*0.8,#????September to April
+  ave_vaccination_duration = 365#months
 )
 
 seirv_pre_vax <- within(seirv_params, {
@@ -68,70 +68,30 @@ seirv <- function(t, y, params){
 }
 
 #Set the time
-num_years <- 3
+num_years <- 4
 time.out <- seq(0, num_years*365, 7)
-
-#test if it works 
-out <- seirv(time.out[2], flu_zero, seirv_params)
-names(out)
-# out <- out + seirv(time.out[2], flu_zero, seirv_params)#*0.1
-
-out
-
-f.xbytime <- function(x0, parms, deltat, maxt) {
-    # initialise x: state variables
-    
-    x <- x0
-    S.A <- x['S.A']
-    E.A <- x['E.A']
-    I.A <- x['I.A']
-    R.A <- x['R.A']
-    V.A <- x['V.A']
-    S.T <- x['S.T']
-    E.T <- x['E.T']
-    I.T <- x['I.T']
-    R.T <- x['R.T']
-    V.T <- x['V.T']
-    # N <- sum(x) # S + I + R
-    
-    # initialise y: columns for time and state variables 
-    
-    y <- data.frame(time = 0, S.A = S.A, E.A = E.A, I.A = I.A, R.A = R.A, V.A = V.A,
-        S.T = S.T, E.T = E.T, I.T = I.T, R.T = R.T, V.T = V.T
-    )
-    #
-    for (currenttime in seq(from = deltat, to = maxt, by = deltat)) {
-        xx <- names(x[[1]])
-        x <- xx + seirv(currenttime, x, parms)*deltat
-        y <- rbind(y
-                , c(time = currenttime, S.A = x[['S.A']], E.A = x[['E.A']], I.A = x[['I.A']], R.A = x[['R.A']], V.A = x[['V.A']],
-                S.T = x[['S.T']], E.T = x[['E.T']], I.T = x[['I.T']], R.T = x[['R.T']], V.T = x[['V.T']]
-                ))
-        
-    }
-    
-    return(y)
-}
-
-f.xbytime(flu_zero, seirv_params, deltat=0.1, 1)
 
 ts_seirv <- tail(data.frame(lsoda(
   y = flu_zero,               # Initial conditions for population
   times = time.out,             # Timepoints for evaluation
   func = seirv,                   # Function to evaluate
-  parms = seirv_params#seirv_pre_vax                # Vector of parameters
+  parms = seirv_params              # Vector of parameters
 )), 100)
 
 head(ts_seirv)
 
 
 plot(ts_seirv$time,               # Time on the x axis
-     ts_seirv$S.T,                  # Number infected (I) on the y axis
-     xlab = "Time in days",     # Label the x axis
-     ylab = "Number infected",  # Label the y axis
+     ts_seirv$I.T,                  # Number infected (I) on the y axis
+     xlab = "Tim0e in weeks",     # Label the x axis
+     ylab = "Number of infected",  # Label the y axis
      main = "Influenza",    # Plot title
      xlim = c(0, num_years*365),           #
+     col="blue",
      type = "l",                # Use a line plot
      bty = "n")                 # Remove the box around the plot
 
 
+lines(ts_seirv$time, ts_seirv$I.A, col="red")
+
+legend("topright", legend = c("Risk tolerant", "Risk averse"), col = c("blue", "red"), lwd = 2)
