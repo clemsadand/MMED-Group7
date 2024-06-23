@@ -4,7 +4,7 @@ library(deSolve)# Load libary to be used for numerical integration
 seirv_params <- list(
   beta.AA = 0.1,
   beta.AT = 0.01,
-  beta.TA = 0.001,
+  beta.TA = 0.01,
   beta.TT = 0.1,
   N.A = 100000,
   N.T = 100000,
@@ -21,8 +21,8 @@ seirv_pre_vax <- within(seirv_params, {
 })
 
 #Initial state
-flu_zero <- c(S.A = seirv_params$N.A - 14, E.A = 5, I.A = 8, R.A = 0, V.A = 1,
-              S.T = seirv_params$N.T - 2, E.T = 0, I.T = 1, R.T = 0, V.T = 1)
+flu_zero <- c(S.A = seirv_params$N.A - 15, E.A = 5, I.A = 8, R.A = 1, V.A = 1,
+              S.T = seirv_params$N.T - 2, E.T = 0, I.T = 1, R.T = 1, V.T = 1)
 
 
 
@@ -44,7 +44,7 @@ seirv <- function(t, y, params){
         dS.Adt <- (birth + immunity_loss.A) - (infection.A + contact_suscT_to_suscA + vaccination.A)
         dE.Adt <- infection.A - incubation.A
         dI.Adt <- incubation.A - (recovery.A + disease_death)
-        dR.Adt <- - (recovery.A + disease_death)
+        dR.Adt <- - recovery.A
         dV.Adt <- vaccination.A - immunity_loss.A
 
         #Risk tolerant
@@ -59,7 +59,7 @@ seirv <- function(t, y, params){
         dS.Tdt <- (birth + immunity_loss.T) - (infection.T + contact_suscA_to_suscT + vaccination.T)
         dE.Tdt <- infection.T - incubation.T
         dI.Tdt <- incubation.T - (recovery.T + disease_death)
-        dR.Tdt <- - (recovery.T + disease_death)
+        dR.Tdt <- - recovery.T
         dV.Tdt <- vaccination.T - immunity_loss.T
 
         # Return the rate of change for each compartment adjusted for natural deaths
@@ -78,7 +78,7 @@ ts_seirv <- tail(data.frame(lsoda(
   parms = seirv_params              # Vector of parameters
 )), 100)
 
-head(ts_seirv,20)
+head(ts_seirv)
 
 
 plot(ts_seirv$time,               # Time on the x axis

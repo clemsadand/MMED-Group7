@@ -8,5 +8,5 @@ FILENAME = .
 # Push the file to GitHub
 push:
 	git add $(FILENAME)
-	git commit -m "Add $(FILENAME)"
+	git commit -m "This version is based on the last ODE equations(see Overleaf)"
 	git push origin main
