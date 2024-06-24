@@ -15,7 +15,9 @@ and mix with each other. In order to model the human behavior regarding the infl
 outbreak, a compartimental model is developed. It is a combination of two SEIRV 
 (Susceptible - Exposed - Infectious - Recovered - Vaccination) models.
 
-![Combined SEIRV model](influenza-semi-final.drawio.png)
+<div style="text-align: center;">
+  <img src="influenza-semi-final.drawio.png" alt="Alt text" width="500" height="300">
+</div>
 
 ## Objectives
 
