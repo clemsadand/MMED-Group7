@@ -16,7 +16,7 @@ outbreak, a compartimental model is developed. It is a combination of two SEIRV
 (Susceptible - Exposed - Infectious - Recovered - Vaccination) models.
 
 <div style="text-align: center;">
-  <img src="influenza-semi-final.drawio.png" alt="Alt text" width="500" height="300">
+  <img src="influenza-semi-final.drawio.png" alt="Alt text" width="500" height="400">
 </div>
 
 ## Objectives
