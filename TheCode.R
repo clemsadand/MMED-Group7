@@ -2,6 +2,7 @@ library(deSolve)# Load libary to be used for numerical integration
 
 seirv_params <- list(
   a = 50,
+  c = 30,
   beta_AA = 2,
   beta_AT = 2,
   beta_TA = 2,
@@ -34,17 +35,17 @@ seirv <- function(t, y, parms){
     # lambda_TT <- beta_TT*I_T/N_T; lambda_AT <- beta_AT*I_A/N_A;
     # lambda_AA <- beta_AA * exp(-a*I_A/N_A); lambda_TA <- beta_TA * exp(-a*I_T/N_T);
     # lambda_TT <- beta_TT * exp(-a*I_T/N_T); lambda_AT <- beta_AT * exp(-a*I_A/N_A);
-    lambda_AA <- beta_AA * exp(-a*I/N); 
-    lambda_TA <- beta_TA * exp(-a*I/N);
-    lambda_TT <- beta_TT ; 
-    lambda_AT <- beta_AT *exp(-a*I/N);
+    lambda_AA <- beta_AA * exp(-a*I/N)* I_A/N_A; 
+    lambda_TA <- beta_TA * exp(-c*I/N)*I_T/N_T;
+    lambda_TT <- beta_TT*I_T/N_T ; 
+    lambda_AT <- beta_AT *exp(-c*I/N)*I_A/N_A;
     #
     # FOI_AA <- lambda_AA * fn.control(t,1.0, 0.2,0.5) * (I_A+I_T)/(N_A+N_T); FOI_TA <- lambda_TA * fn.control(t,1.0, 0.2,0.5) * (I_A+I_T)/(N_A+N_T);
     # FOI_TT <- lambda_TT * fn.control(t,1.0, 0.2,0.5) * (I_A+I_T)/(N_A+N_T); FOI_AT <- lambda_AT * fn.control(t,1.0, 0.2,0.5) * (I_A+I_T)/(N_A+N_T);
     # FOI_AA <- lambda_AA * I/N; FOI_TA <- lambda_TA * I_T/N;
     # FOI_TT <- lambda_TT * I/N; FOI_AT <- lambda_AT * I_A/N;
     # risk averse
-    dS_Adt <- (b*N_A + tau * V_A) - (mu + nu + lambda_AA + lambda_TA)*S_A
+    dS_Adt <- (b*N_A + tau * V_A) - (mu + nu + lambda_AA + lambda_TA)*S_A 
     dE_Adt <- (lambda_AA + lambda_TA) * S_A - (gamma + mu) * E_A
     # dS_Adt <- (b*N_A + tau * V_A) - (mu + nu + FOI_AA + FOI_TA)*S_A
     # dE_Adt <- (FOI_AA + FOI_TA) * S_A - (gamma + mu) * E_A
