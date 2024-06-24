@@ -38,7 +38,14 @@ seirv <- function(t, y, parms){
     N <- N_A + N_T
     I <- I_A + I_T
     mu = b#background death rate
+<<<<<<< HEAD
     #Transmission coefficients
+=======
+    # lambda_AA <- beta_AA*I_A/N_A; lambda_TA <- beta_TA*I_T/N_T;
+    # lambda_TT <- beta_TT*I_T/N_T; lambda_AT <- beta_AT*I_A/N_A;
+    # lambda_AA <- beta_AA * exp(-a*I_A/N_A); lambda_TA <- beta_TA * exp(-a*I_T/N_T);
+    # lambda_TT <- beta_TT * exp(-a*I_T/N_T); lambda_AT <- beta_AT * exp(-a*I_A/N_A);
+>>>>>>> f81ceca01a60225043573a95eac3b83bf79b9570
     lambda_AA <- beta_AA * exp(-a*I/N)* I_A/N_A; 
     lambda_TA <- beta_TA * exp(-c*I/N)*I_T/N_T;
     lambda_TT <- beta_TT*I_T/N_T ; 
@@ -48,7 +55,7 @@ seirv <- function(t, y, parms){
     # FOI_TT <- lambda_TT * I/N; FOI_AT <- lambda_AT * I_A/N;
     
     # risk averse
-    dS_Adt <- (b*N_A + tau * V_A) - (mu + nu + lambda_AA + lambda_TA)*S_A
+    dS_Adt <- (b*N_A + tau * V_A) - (mu + nu + lambda_AA + lambda_TA)*S_A 
     dE_Adt <- (lambda_AA + lambda_TA) * S_A - (gamma + mu) * E_A
     # dS_Adt <- (b*N_A + tau * V_A) - (mu + nu + FOI_AA + FOI_TA)*S_A
     # dE_Adt <- (FOI_AA + FOI_TA) * S_A - (gamma + mu) * E_A
