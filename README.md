@@ -1,3 +1,5 @@
+
+
 # Modelling Human Behavior
 
 This epidemiology project was completed as part of the [MMED 2024](https://www.ici3d.org/MMED), 
@@ -45,6 +47,12 @@ based on the protective measures adopted by the risk-averse group.
    git clone https://github.com//clemsadand/MMED-Group7/
 
 ## Authors
+- [Chaelin](https://github.com/ckim0509)
+- [Clément](https://github.com/clemsadand)
+- [Damaris](https://github.com/damariskimonge)
+- [Dean](https://github.com/D3lt4-783)
+- [Ingrid](https://github.com/IngridThandeka)
+- [Rivado](https://github.com/RivaldoMessia)
 
 ## Acknowlegment
 
