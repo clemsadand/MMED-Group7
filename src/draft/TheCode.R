@@ -165,7 +165,7 @@ simEpidemic <- function(initial_state, timestep, model, params){
 # }
 
 sampleEpidemic <- function(simDat # Simulated "data" which we treat as real 
-                           , sampleDates = seq(0,100, by = 3) # Sample every 3 years 
+                           , sampleDates = seq(0,100, by = 3) # Sample every 3 days
                            , numSamp = rep(80, length(sampleDates)) # Number of individuals sampled at each time point
 ){
   prev_at_sample_times <- simDat[simDat$time %in% sampleDates, 'P']
