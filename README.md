@@ -149,7 +149,13 @@ $$
 \lambda_T = \left[\beta_{TT} \frac{I_T}{N_T} + \beta_{AT}  \cdot \exp\left( - c \times \frac{1}{5} \times \frac{I}{N} \right)\cdot\frac{I_A}{N_A}  \right]\times z(t)
 $$
 
-where $$z(t) = \begin{cases}1 \\ 0.5 \end{cases}.$$
+where 
+$$
+z(t) = \begin{cases}
+1 \text{ $t<\tau$} \\ 
+0.5 \text{ otherwise} 
+\end{cases}.
+$$
 
 
 
