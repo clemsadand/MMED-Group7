@@ -151,11 +151,12 @@ $$
 
 where 
 $$
-z(t) = \begin{cases}
+z(t) = \left\(\begin{aligned}
 1 \text{ $t<\tau$} \\ 
 0.5 \text{ otherwise} 
-\end{cases}.
+\end{aligned}\right.
 $$
+and $\tau$ is the intervention day.
 
 
 
