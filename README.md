@@ -58,7 +58,7 @@ they may transition to the Infectious stage and subsequently either recover or
 succumb to the disease.
 
 <div style="text-align: center;">
-  <img src="influenza-semi-final-final.drawio.png" alt="Alt text" width="500" height="400">
+  <img src="fig/influenza-semi-final-final.drawio.png" alt="Alt text" width="500" height="400">
 </div>
 
 #### Model assumptions
@@ -110,7 +110,9 @@ $\frac{I_A(t)+I_T(t)}{N_A+N_T}$. And the proportion of new cases is given by the
 over the $N_sam$. The figure shows the distribution of the new cases of Influenza generated 
 against the time.
 
-![Simulated data](simulated_data.png)
+<div style="text-align: center;">
+  <img src="fig/simulated_data.png" alt="Alt text" width="500" height="400" alt="Simulated data">
+</div>
 
 ### 2.3 Parameter estimation
 
@@ -156,7 +158,10 @@ where $$z(t) = \begin{cases}1 \\ 0.5 \end{cases}.$$
 The figure below shows the change over time of the number of new cases for different
  intervention days.
 
-![Different Intervention Days](InterventionTrue.png)
+
+<div style="text-align: center;">
+  <img src="fig/InterventionTrue.png" alt="Alt text" width="500" height="400" alt="Different Intervention Days">
+</div>
 
 As expected, implementing the intervention early of the outbreak will drastically 
 reduce the the number of cases. To reduce the peak of infection by 30% we have to 
