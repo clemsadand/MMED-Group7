@@ -111,7 +111,7 @@ over the $N_sam$. The figure shows the distribution of the new cases of Influenz
 against the time.
 
 <div style="text-align: center;">
-  <img src="fig/simulated_data.png" alt="Alt text" width="500" height="400" alt="Simulated data">
+  <img src="fig/simulated_data.png" alt="Alt text" width="400" height="400" alt="Simulated data">
 </div>
 
 ### 2.3 Parameter estimation
@@ -160,15 +160,12 @@ The figure below shows the change over time of the number of new cases for diffe
 
 
 <div style="text-align: center;">
-  <img src="fig/InterventionTrue.png" alt="Alt text" width="500" height="400" alt="Different Intervention Days">
+  <img src="fig/InterventionTrue.png" alt="Alt text" width="400" height="400" alt="Different Intervention Days">
 </div>
 
 As expected, implementing the intervention early of the outbreak will drastically 
 reduce the the number of cases. To reduce the peak of infection by 30% we have to 
 implement the mandate exactly a week after the first infection case is reported.
-
-
-<--! However, this is unrealistic.  Naturally, the later we implement the mask mandate, the greater the peak will be. But to answer our question, if we want to reduce the peak of new cases by 30\% we have to implement the mandate exactly a week after the first case is reported. -->
 
 ## 4. Conclusion
 
