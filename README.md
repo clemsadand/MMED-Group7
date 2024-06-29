@@ -107,7 +107,7 @@ for 3 months. Second, we measure new cases by drawing cross-sectional samples of
 individuals at each three-day interval, testing them for the presence of Influenza and computing the 
 proportion of new cases. For test, the probability of sucess at the day $t$ corresponds to the 
 $\frac{I_A(t)+I_T(t)}{N_A+N_T}$. And the proportion of new cases is given by the number of successes
-over the $N_sam$. The figure shows the distribution of the new cases of Influenza generated 
+over the $N_{\text{sam}}$. The figure shows the distribution of the new cases of Influenza generated 
 against the time.
 
 <div style="text-align: center;">
@@ -122,7 +122,7 @@ the binomial likelihood.
 For a given time $t$, the probability $k$ new cases out of the suscitible is given by the binomial distribution:
 
 $$
-P(k|beta_{*}) = C_{S_A+S_T}^{k} \times p^k (1-p)^{S_A+S_T - k}
+P(k|\beta_{*}) = C_{S_A+S_T}^{k} \times p^k (1-p)^{S_A+S_T - k}
 $$
 where $p = \frac{1}{5} \times \left(\beta_{AA} + \beta_{TA}\right)\frac{I_A}{N_A} +  \left(\beta_{TT} + \beta_{AT}\right)\frac{I_N}{N_T}$.
 
