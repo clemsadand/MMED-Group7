@@ -152,7 +152,7 @@ $$
 where 
 $$
 z(t) = \left\(\begin{aligned}
-1 \text{ $t<\tau$} \\ 
+1 \text{ $t<\tau$} \\\\ 
 0.5 \text{ otherwise} 
 \end{aligned}\right.
 $$
