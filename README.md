@@ -122,7 +122,7 @@ the binomial likelihood.
 For a given time $t$, the probability $k$ new cases out of the suscitible is given by the binomial distribution:
 
 $$
-P(k|\beta_{*}) = C_{S_A+S_T}^{k} \times p^k (1-p)^{S_A+S_T - k}
+P(k|\beta) = C_{S_A+S_T}^{k} \times p^k (1-p)^{S_A+S_T - k}
 $$
 where $p = \frac{1}{5} \times \left(\beta_{AA} + \beta_{TA}\right)\frac{I_A}{N_A} +  \left(\beta_{TT} + \beta_{AT}\right)\frac{I_N}{N_T}$.
 
